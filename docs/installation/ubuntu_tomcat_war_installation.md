@@ -116,7 +116,7 @@ sed -z -r -i 's/(<Valve className="org.apache.catalina.valves.AccessLogValve".*\
 
 # CHECK JAVA INSTALLATION PATH
 sudo update-java-alternatives -l
-# java-1.11.0-openjdk-amd64      1111       /usr/lib/jvm/java-1.11.0-openjdk-amd64
+> java-1.11.0-openjdk-amd64      1111       /usr/lib/jvm/java-1.11.0-openjdk-amd64
 
 
 
@@ -125,19 +125,33 @@ sudo nano /etc/systemd/system/tomcat.service
 
  # APPEND LINES TO TOMCAT SERVICE FILE
 [Unit]
+
 Description=Apache Tomcat Web Application Container
+
 After=network.target
+
 [Service]
+
 Type=forking
+
 User=tomcat
+
 Group=tomcat
+
 Environment="JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64"
+
 Environment="CATALINA_HOME=/opt/default-tomcat"
+
 Environment="CATALINA_PID=/opt/default-tomcat/temp/tomcat.pid"
+
 Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
 ExecStart=/opt/default-tomcat/bin/startup.sh
+
 ExecStop=/opt/default-tomcat/bin/shutdown.sh
+
 [Install]
+
 WantedBy=multi-user.target
 
 
