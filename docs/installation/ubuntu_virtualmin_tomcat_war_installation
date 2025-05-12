@@ -1,0 +1,3 @@
+On a clean ubuntu server 24.04 run the following command:
+
+# sudo sh -c "$(curl -fsSL https://software.virtualmin.com/gpl/scripts/virtualmin-install.sh)" -- --bundle LAMP
